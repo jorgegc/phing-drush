@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush" default="drush:init">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"        value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"        value="${drush.bin}" />
+  <property name="drush.alias.file" value="" />
+
+  <!-- ## Targets -->
+
+  <target name="drush:init">
+    <fail unless="drush.alias.file"
+          message="Please provide a drush.alias.file property." />
+
+    <exec command="mkdir -p ~/.drush"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+
+    <exec command="cp ${project.basedir}/${drush.alias.file} ~/.drush/"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>

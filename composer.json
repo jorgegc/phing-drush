@@ -1,0 +1,17 @@
+{
+    "name": "jorgegc/phing-drush",
+    "description": "A collection of Drush targets for Phing.",
+    "type": "library",
+    "keywords": [
+        "phing",
+        "drush"
+    ],
+    "license": "GPL-2.0+",
+    "require": {
+        "drush/drush": "6.*"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
