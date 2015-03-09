@@ -10,7 +10,8 @@
 
   <!-- ## Targets -->
 
-  <target name="drush:init">
+  <target name="drush:init"
+          description="Sets up the Drush alias.">
     <fail unless="drush.alias.file"
           message="Please provide a drush.alias.file property." />
 
