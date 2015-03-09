@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-simpletest" default="simpletest:run">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"              value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"              value="${drush.bin}" />
+  <property name="drush.target"           value="" />
+
+  <property name="simpletest.group"       value="" />
+  <property name="simpletest.report.dir"  value="" />
+
+  <!-- ## Targets -->
+
+  <target name="simpletest:init">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+
+    <exec command="${drush.cmd} ${drush.target} en simpletest -y"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="simpletest:run"
+          depends="simpletest:init"
+          description="Runs simpletests and prints human readable output. Intended for usage on the command line before committing.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+    <fail unless="simpletest.group"
+          message="Please provide a simpletest.group property." />
+
+    <exec command="${drush.cmd} ${drush.target} test-run ${simpletest.group} --dirty"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="simpletest:run-ci"
+          depends="simpletest:init"
+          description="Runs simpletests and prints human readable output. Intended for usage on the continuous integration server.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+    <fail unless="simpletest.group"
+          message="Please provide a simpletest.group property." />
+    <fail unless="simpletest.report.dir"
+          message="Please provide a simpletest.report.dir property." />
+
+    <mkdir dir="${simpletest.report.dir}" />
+
+    <exec command="${drush.cmd} ${drush.target} test-run ${simpletest.group} --dirty --xml=${simpletest.report.dir}"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>
