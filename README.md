@@ -20,8 +20,15 @@ include these tasks as well with the following line in your build.xml:
 
 ```
 <import file="vendor/jorgegc/phing-drush/build.xml" optional="true" />
+<import file="vendor/jorgegc/phing-drush/build.database.xml" optional="true" />
+<import file="vendor/jorgegc/phing-drush/build.files.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.simpletest.xml" optional="true" />
 ```
+
+We also provide some template files that should be added (and updated)
+to the root of the project. These files are:
+
+* example.aliases.drushrc.php
 
 ## Usage
 
