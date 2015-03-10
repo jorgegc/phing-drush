@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-files" default="files:sync">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"     value="${drush.bin}" />
+  <property name="drush.source"  value="" />
+  <property name="drush.target"  value="@${phing.project.name}.local" />
+
+  <!-- ## Targets -->
+
+  <target name="files:sync"
+          description="Synchronises the files from source to target.">
+    <fail unless="drush.source"
+          message="Please provide a drush.source property." />
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+
+    <exec command="${drush.cmd} -y rsync ${drush.source}:%files ${drush.target}:%files --mode=avz --progress"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>
