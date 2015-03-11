@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-install" default="install:drupal">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"     value="${drush.bin}" />
+  <property name="drush.target"  value="@${phing.project.name}.local" />
+  <property name="drush.profile" value="" />
+
+  <!-- ## Targets -->
+
+  <target name="install:drupal"
+          description="Installs Drupal on a clean database.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+    <fail unless="drush.profile"
+          message="Please provide a drush.profile property." />
+
+    <exec command="${drush.cmd} ${drush.target} site-install ${drush.profile} -y"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>

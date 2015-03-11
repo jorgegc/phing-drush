@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-cache" default="cache:clear">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"     value="${drush.bin}" />
+  <property name="drush.target"  value="@${phing.project.name}.local" />
+
+  <!-- ## Targets -->
+
+  <target name="cache:clear"
+          description="Clears the Drupal cache.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+
+    <exec command="${drush.cmd} ${drush.target} cc all"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="cache:disable"
+          description="Disables Drupal page cache and CSS and JS aggregation.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+
+    <exec command="${drush.cmd} ${drush.target} vset -y cache 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+    <exec command="${drush.cmd} ${drush.target} vset -y block_cache 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+    <exec command="${drush.cmd} ${drush.target} vset -y cache_lifetime 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+    <exec command="${drush.cmd} ${drush.target} vset -y page_cache_maximum_age 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+    <exec command="${drush.cmd} ${drush.target} vset -y preprocess_css 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+    <exec command="${drush.cmd} ${drush.target} vset -y preprocess_js 0"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>

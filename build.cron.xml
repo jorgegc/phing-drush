@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-cron" default="cron:run">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"     value="${drush.bin}" />
+  <property name="drush.target"  value="@${phing.project.name}.local" />
+
+  <!-- ## Targets -->
+
+  <target name="cron:run"
+          description="Runs the Drupal cron.">
+    <fail unless="drush.target"
+          message="Please provide a drush.target property." />
+
+    <exec command="${drush.cmd} ${drush.target} cron"
+          passthru="true"
+          logoutput="true"
+          checkreturn="true" />
+  </target>
+
+</project>
