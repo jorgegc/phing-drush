@@ -4,10 +4,10 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"     value="${drush.bin}" />
-  <property name="drush.source"  value="" />
-  <property name="drush.target"  value="@${phing.project.name}.local" />
+  <property name="drush.bin"    value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"    value="${drush.bin}" />
+  <property name="drush.source" value="" />
+  <property name="drush.target" value="@${phing.project.name}.local" />
 
   <!-- ## Targets -->
 

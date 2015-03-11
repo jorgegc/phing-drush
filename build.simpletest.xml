@@ -4,12 +4,12 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"              value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"              value="${drush.bin}" />
-  <property name="drush.target"           value="@${phing.project.name}.local" />
+  <property name="drush.bin"             value="${project.basedir}/bin/drush" />
+  <property name="drush.cmd"             value="${drush.bin}" />
+  <property name="drush.target"          value="@${phing.project.name}.local" />
 
-  <property name="simpletest.group"       value="" />
-  <property name="simpletest.report.dir"  value="" />
+  <property name="simpletest.group"      value="" />
+  <property name="simpletest.report.dir" value="" />
 
   <!-- ## Targets -->
 
