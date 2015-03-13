@@ -16,9 +16,6 @@
   <target name="simpletest:init"
           description="Enables the SimpleTest module."
           hidden="true">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} en simpletest -y"
           passthru="true"
           logoutput="true"
@@ -28,11 +25,8 @@
   <target name="simpletest:run"
           depends="simpletest:init"
           description="Runs simpletests and prints human readable output. Intended for usage on the command line before committing.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
     <fail unless="simpletest.group"
           message="Please provide a simpletest.group property." />
-
     <exec command="${drush.cmd} ${drush.target} test-run ${simpletest.group} --dirty"
           passthru="true"
           logoutput="true"
@@ -42,8 +36,6 @@
   <target name="simpletest:run-ci"
           depends="simpletest:init"
           description="Runs simpletests and prints human readable output. Intended for usage on the continuous integration server.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
     <fail unless="simpletest.group"
           message="Please provide a simpletest.group property." />
     <fail unless="simpletest.report.dir"

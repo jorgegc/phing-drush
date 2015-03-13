@@ -12,9 +12,6 @@
 
   <target name="features:revert"
           description="Reverts all the features.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} fra -y"
           passthru="true"
           logoutput="true"

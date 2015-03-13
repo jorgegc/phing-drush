@@ -12,14 +12,10 @@
 
   <target name="registry:rebuild"
           description="Runs a registry rebuild on the application.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} dl registry_rebuild -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-
     <exec command="${drush.cmd} ${drush.target} rr"
           passthru="true"
           logoutput="true"

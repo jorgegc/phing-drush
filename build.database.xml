@@ -14,9 +14,6 @@
 
   <target name="database:update"
           description="Performs database updates.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} updb -y"
           passthru="true"
           logoutput="true"
@@ -25,9 +22,6 @@
 
   <target name="database:drop"
           description="Drops a database.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} sql-drop -y"
           passthru="true"
           logoutput="true"
@@ -39,9 +33,6 @@
           depends="database:drop">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} sql-sync ${drush.source} ${drush.target} -y --no-cache"
           passthru="true"
           logoutput="true"
@@ -53,9 +44,6 @@
           depends="database:drop">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
           passthru="true"
           logoutput="true"

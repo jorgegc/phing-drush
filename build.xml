@@ -12,14 +12,10 @@
 
   <target name="drush:init"
           description="Sets up the Drush alias.">
-    <fail unless="drush.alias.file"
-          message="Please provide a drush.alias.file property." />
-
     <exec command="mkdir -p ~/.drush"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-
     <exec command="cp ${project.basedir}/${drush.alias.file} ~/.drush/"
           passthru="true"
           logoutput="true"

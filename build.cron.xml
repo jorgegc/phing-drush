@@ -12,9 +12,6 @@
 
   <target name="cron:run"
           description="Runs the Drupal cron.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} cron"
           passthru="true"
           logoutput="true"

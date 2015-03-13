@@ -11,9 +11,6 @@
   <!-- ## Targets -->
 
   <target name="maintenance:on" description="Turns on Drupal maintenance modes.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} vset site_offline 1 -y"
           passthru="true"
           logoutput="true"
@@ -25,9 +22,6 @@
   </target>
 
   <target name="maintenance:off" description="Turns off Drupal maintenance mode.">
-    <fail unless="drush.target"
-          message="Please provide a drush.target property." />
-
     <exec command="${drush.cmd} ${drush.target} vset site_offline 0 -y"
           passthru="true"
           logoutput="true"
