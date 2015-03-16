@@ -5,28 +5,27 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"    value="${drush.bin}" />
   <property name="drush.target" value="@${phing.project.name}.local" />
 
   <!-- ## Targets -->
 
   <target name="maintenance:on" description="Turns on Drupal maintenance modes.">
-    <exec command="${drush.cmd} ${drush.target} vset site_offline 1 -y"
+    <exec command="${drush.bin} ${drush.target} vset site_offline 1 -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-    <exec command="${drush.cmd} ${drush.target} vset maintenance_mode 1 -y"
+    <exec command="${drush.bin} ${drush.target} vset maintenance_mode 1 -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
   </target>
 
   <target name="maintenance:off" description="Turns off Drupal maintenance mode.">
-    <exec command="${drush.cmd} ${drush.target} vset site_offline 0 -y"
+    <exec command="${drush.bin} ${drush.target} vset site_offline 0 -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-    <exec command="${drush.cmd} ${drush.target} vset maintenance_mode 0 -y"
+    <exec command="${drush.bin} ${drush.target} vset maintenance_mode 0 -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

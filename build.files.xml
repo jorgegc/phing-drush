@@ -5,7 +5,6 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"    value="${drush.bin}" />
   <property name="drush.source" value="" />
   <property name="drush.target" value="@${phing.project.name}.local" />
 
@@ -15,7 +14,7 @@
           description="Synchronises the files from source to target.">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <exec command="${drush.cmd} -y rsync ${drush.source}:%files ${drush.target}:%files --mode=avz --progress"
+    <exec command="${drush.bin} -y rsync ${drush.source}:%files ${drush.target}:%files --mode=avz --progress"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

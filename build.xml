@@ -4,8 +4,6 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"        value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"        value="${drush.bin}" />
   <property name="drush.alias.file" value="${phing.project.name}.aliases.drushrc.php" />
 
   <!-- ## Targets -->

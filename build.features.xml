@@ -5,14 +5,13 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"    value="${drush.bin}" />
   <property name="drush.target" value="@${phing.project.name}.local" />
 
   <!-- ## Targets -->
 
   <target name="features:revert"
           description="Reverts all the features.">
-    <exec command="${drush.cmd} ${drush.target} fra -y"
+    <exec command="${drush.bin} ${drush.target} fra -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

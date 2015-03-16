@@ -5,7 +5,6 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"    value="${drush.bin}" />
   <property name="drush.source" value="" />
   <property name="drush.target" value="@${phing.project.name}.local" />
   <property name="drush.tmpdir" value="/tmp" />
@@ -14,15 +13,15 @@
 
   <target name="database:update"
           description="Performs database updates.">
-    <exec command="${drush.cmd} ${drush.target} updb -y"
+    <exec command="${drush.bin} ${drush.target} updb -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
   </target>
 
   <target name="database:drop"
-          description="Drops a database.">
-    <exec command="${drush.cmd} ${drush.target} sql-drop -y"
+          description="Drops the target database.">
+    <exec command="${drush.bin} ${drush.target} sql-drop -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
@@ -33,7 +32,7 @@
           depends="database:drop">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <exec command="${drush.cmd} sql-sync ${drush.source} ${drush.target} -y --no-cache"
+    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --no-cache"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
@@ -44,7 +43,7 @@
           depends="database:drop">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <exec command="${drush.cmd} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
+    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

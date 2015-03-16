@@ -5,7 +5,6 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"             value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"             value="${drush.bin}" />
   <property name="drush.target"          value="@${phing.project.name}.local" />
 
   <property name="simpletest.group"      value="" />
@@ -14,12 +13,20 @@
   <!-- ## Targets -->
 
   <target name="simpletest:init"
-          description="Enables the SimpleTest module."
+          description="Setup steps for simpletest build tasks."
+          unless="simpletest.initialized"
           hidden="true">
-    <exec command="${drush.cmd} ${drush.target} en simpletest -y"
+    <fail unless="simpletest.report.dir"
+          message="Please provide a simpletest.report.dir property." />
+
+    <mkdir dir="${simpletest.report.dir}" />
+
+    <exec command="${drush.bin} ${drush.target} en simpletest -y"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
+
+    <property name="simpletest.initialized" value="true" />
   </target>
 
   <target name="simpletest:run"
@@ -27,7 +34,7 @@
           description="Runs simpletests and prints human readable output. Intended for usage on the command line before committing.">
     <fail unless="simpletest.group"
           message="Please provide a simpletest.group property." />
-    <exec command="${drush.cmd} ${drush.target} test-run ${simpletest.group} --dirty"
+    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.group} --dirty"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
@@ -38,12 +45,7 @@
           description="Runs simpletests and prints human readable output. Intended for usage on the continuous integration server.">
     <fail unless="simpletest.group"
           message="Please provide a simpletest.group property." />
-    <fail unless="simpletest.report.dir"
-          message="Please provide a simpletest.report.dir property." />
-
-    <mkdir dir="${simpletest.report.dir}" />
-
-    <exec command="${drush.cmd} ${drush.target} test-run ${simpletest.group} --dirty --xml=${simpletest.report.dir}"
+    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.group} --dirty --xml=${simpletest.report.dir}"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

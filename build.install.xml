@@ -5,7 +5,6 @@
   <!-- ## Properties -->
 
   <property name="drush.bin"      value="${project.basedir}/bin/drush" />
-  <property name="drush.cmd"      value="${drush.bin}" />
   <property name="drush.target"   value="@${phing.project.name}.local" />
 
   <property name="drupal.profile" value="" />
@@ -19,7 +18,7 @@
           message="Please provide a drupal.profile property." />
     <fail unless="drupal.siteuri"
           message="Please provide a drupal.siteuri property." />
-    <exec command="${drush.cmd} ${drush.target} site-install ${drupal.profile} -y --uri=${drupal.siteuri}"
+    <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile} -y --uri=${drupal.siteuri}"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
