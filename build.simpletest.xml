@@ -8,7 +8,7 @@
   <property name="drush.target"          value="@${phing.project.name}.local" />
 
   <property name="simpletest.group"      value="" />
-  <property name="simpletest.report.dir" value="" />
+  <property name="simpletest.report.dir" value="${project.basedir}/build/logs/simpletest" />
 
   <!-- ## Targets -->
 
@@ -16,9 +16,6 @@
           description="Setup steps for simpletest build tasks."
           unless="simpletest.initialized"
           hidden="true">
-    <fail unless="simpletest.report.dir"
-          message="Please provide a simpletest.report.dir property." />
-
     <mkdir dir="${simpletest.report.dir}" />
 
     <exec command="${drush.bin} ${drush.target} en simpletest -y"
