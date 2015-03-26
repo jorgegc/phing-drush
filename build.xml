@@ -14,7 +14,7 @@
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-    <exec command="cp ${project.basedir}/${drush.alias.file} ~/.drush/"
+    <exec command="cp ${project.basedir}/${drush.alias.file} ~/.drush/${phing.project.name}.aliases.drushrc.php"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
