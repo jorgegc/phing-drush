@@ -4,20 +4,23 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.alias.file" value="${phing.project.name}.aliases.drushrc.php" />
+  <property name="drush.alias.file" value="${project.basedir}/example.aliases.drushrc.php" />
 
   <!-- ## Targets -->
 
   <target name="drush:init"
           description="Sets up the Drush alias.">
-    <exec command="mkdir -p ~/.drush"
+    <exec command="mkdir -p ${env.HOME}/.drush"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
-    <exec command="cp ${project.basedir}/${drush.alias.file} ~/.drush/${phing.project.name}.aliases.drushrc.php"
-          passthru="true"
-          logoutput="true"
-          checkreturn="true" />
+    <copy file="${drush.alias.file}"
+          tofile="${env.HOME}/.drush/${phing.project.name}.aliases.drushrc.php"
+          overwrite="true">
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+    </copy>
   </target>
 
 </project>
