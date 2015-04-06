@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush" default="drush:init">
+<project name="drush" default="drush:config">
 
   <!-- ## Properties -->
 
   <property name="drush.alias.file" value="${project.basedir}/example.aliases.drushrc.php" />
+  <property name="drush.alias.dir"  value="${env.HOME}/.drush" />
 
   <!-- ## Targets -->
 
-  <target name="drush:init"
-          description="Sets up the Drush alias.">
-    <exec command="mkdir -p ${env.HOME}/.drush"
-          passthru="true"
-          logoutput="true"
-          checkreturn="true" />
+  <target name="drush:config"
+          description="Configures Drush for the project.">
+    <fail unless="drush.alias.file"
+          message="Please provide a drush.alias.file property." />
+    <fail unless="drush.alias.dir"
+          message="Please provide a drush.alias.dir property." />
+    <mkdir dir="${drush.alias.dir}" />
     <copy file="${drush.alias.file}"
-          tofile="${env.HOME}/.drush/${phing.project.name}.aliases.drushrc.php"
+          tofile="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php"
           overwrite="true">
       <filterchain>
         <expandproperties />
