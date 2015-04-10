@@ -14,7 +14,16 @@
           description="Synchronises the files from source to target.">
     <fail unless="drush.source"
           message="Please provide a drush.source property." />
-    <exec command="${drush.bin} -y rsync ${drush.source}:%files ${drush.target}:%files --mode=avz --progress"
+    <exec command="${drush.bin} -y rsync ${drush.source}:%files ${drush.target}:%files
+                   --mode=avz
+                   --delete
+                   --force
+                   --exclude=cdn
+                   --exclude=css
+                   --exclude=ctools
+                   --exclude=js
+                   --exclude=styles
+                   --exclude=xmlsitemap"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
