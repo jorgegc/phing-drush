@@ -6,7 +6,7 @@
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
   <property name="drush.source" value="" />
-  <property name="drush.target" value="@${phing.project.name}.local" />
+  <property name="drush.target" value="" />
   <property name="drush.tmpdir" value="/tmp" />
 
   <!-- ## Targets -->
@@ -30,8 +30,6 @@
   <target name="database:sync"
           description="Synchronises the database from source to target."
           depends="database:drop">
-    <fail unless="drush.source"
-          message="Please provide a drush.source property." />
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --no-cache"
           passthru="true"
           logoutput="true"
@@ -41,8 +39,6 @@
   <target name="database:sync-cached"
           description="Synchronises the database from source to target with dump cached locally."
           depends="database:drop">
-    <fail unless="drush.source"
-          message="Please provide a drush.source property." />
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
           passthru="true"
           logoutput="true"

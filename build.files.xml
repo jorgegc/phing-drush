@@ -6,14 +6,12 @@
 
   <property name="drush.bin"    value="${project.basedir}/bin/drush" />
   <property name="drush.source" value="" />
-  <property name="drush.target" value="@${phing.project.name}.local" />
+  <property name="drush.target" value="" />
 
   <!-- ## Targets -->
 
   <target name="files:sync"
           description="Synchronises the files from source to target.">
-    <fail unless="drush.source"
-          message="Please provide a drush.source property." />
     <exec command="${drush.bin} -y rsync ${drush.source}:%files ${drush.target}:%files
                    --mode=avz
                    --delete

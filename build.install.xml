@@ -4,21 +4,17 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"      value="${project.basedir}/bin/drush" />
-  <property name="drush.target"   value="@${phing.project.name}.local" />
+  <property name="drush.bin"    value="${project.basedir}/bin/drush" />
+  <property name="drush.target" value="" />
 
-  <property name="drupal.profile" value="" />
-  <property name="drupal.siteuri" value="default" />
+  <property name="drupal.profile"      value="standard" />
+  <property name="drupal.sites.subdir" value="default" />
 
   <!-- ## Targets -->
 
   <target name="install:drupal"
           description="Installs Drupal on a clean database.">
-    <fail unless="drupal.profile"
-          message="Please provide a drupal.profile property." />
-    <fail unless="drupal.siteuri"
-          message="Please provide a drupal.siteuri property." />
-    <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile} -y --uri=${drupal.siteuri}"
+    <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile} -y --sites-subdir=${drupal.sites.subdir}"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

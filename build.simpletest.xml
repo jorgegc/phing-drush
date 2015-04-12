@@ -4,10 +4,10 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"             value="${project.basedir}/bin/drush" />
-  <property name="drush.target"          value="@${phing.project.name}.local" />
+  <property name="drush.bin"    value="${project.basedir}/bin/drush" />
+  <property name="drush.target" value="" />
 
-  <property name="simpletest.group"      value="" />
+  <property name="simpletest.targets"    value="" />
   <property name="simpletest.report.dir" value="${project.basedir}/build/logs/simpletest" />
 
   <!-- ## Targets -->
@@ -16,6 +16,13 @@
           description="Setup steps for simpletest build tasks."
           unless="simpletest.initialized"
           hidden="true">
+    <if>
+      <equals arg1="${simpletest.targets}" arg2="" />
+      <then>
+        <fail message="Please provide a simpletest.targets property." />
+      </then>
+    </if>
+
     <mkdir dir="${simpletest.report.dir}" />
 
     <exec command="${drush.bin} ${drush.target} en simpletest -y"
@@ -29,9 +36,7 @@
   <target name="simpletest:run"
           depends="simpletest:init"
           description="Runs simpletests and prints human readable output. Intended for usage on the command line before committing.">
-    <fail unless="simpletest.group"
-          message="Please provide a simpletest.group property." />
-    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.group} --dirty"
+    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.targets} --dirty"
           passthru="true"
           logoutput="true"
           checkreturn="true" />
@@ -40,9 +45,7 @@
   <target name="simpletest:run-ci"
           depends="simpletest:init"
           description="Runs simpletests and prints human readable output. Intended for usage on the continuous integration server.">
-    <fail unless="simpletest.group"
-          message="Please provide a simpletest.group property." />
-    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.group} --dirty --xml=${simpletest.report.dir}"
+    <exec command="${drush.bin} ${drush.target} test-run ${simpletest.targets} --dirty --xml=${simpletest.report.dir}"
           passthru="true"
           logoutput="true"
           checkreturn="true" />

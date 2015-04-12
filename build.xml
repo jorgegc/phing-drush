@@ -11,10 +11,6 @@
 
   <target name="drush:config"
           description="Configures Drush for the project.">
-    <fail unless="drush.alias.file"
-          message="Please provide a drush.alias.file property." />
-    <fail unless="drush.alias.dir"
-          message="Please provide a drush.alias.dir property." />
     <mkdir dir="${drush.alias.dir}" />
     <copy file="${drush.alias.file}"
           tofile="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php"
