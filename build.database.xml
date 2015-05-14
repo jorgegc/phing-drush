@@ -15,7 +15,6 @@
           description="Performs database updates.">
     <exec command="${drush.bin} ${drush.target} updb -y"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 
@@ -23,7 +22,6 @@
           description="Drops the target database.">
     <exec command="${drush.bin} ${drush.target} sql-drop -y"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 
@@ -32,7 +30,6 @@
           depends="database:drop">
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --no-cache"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 
@@ -41,7 +38,6 @@
           depends="database:drop">
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

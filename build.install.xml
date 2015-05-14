@@ -16,7 +16,6 @@
           description="Installs Drupal on a clean database.">
     <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile} -y --sites-subdir=${drupal.sites.subdir}"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

@@ -27,7 +27,6 @@
 
     <exec command="${drush.bin} ${drush.target} en simpletest -y"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
 
     <property name="simpletest.initialized" value="true" />
@@ -38,7 +37,6 @@
           description="Runs simpletests and prints human readable output. Intended for usage on the command line before committing.">
     <exec command="${drush.bin} ${drush.target} test-run ${simpletest.targets} --dirty"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 
@@ -47,7 +45,6 @@
           description="Runs simpletests and prints human readable output. Intended for usage on the continuous integration server.">
     <exec command="${drush.bin} ${drush.target} test-run ${simpletest.targets} --dirty --xml=${simpletest.report.dir}"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

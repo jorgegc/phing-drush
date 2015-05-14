@@ -13,7 +13,6 @@
           description="Runs the Drupal cron.">
     <exec command="${drush.bin} ${drush.target} cron"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

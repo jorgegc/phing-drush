@@ -13,11 +13,9 @@
           description="Runs a registry rebuild on the application.">
     <exec command="${drush.bin} dl registry_rebuild -y"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
     <exec command="${drush.bin} ${drush.target} rr"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

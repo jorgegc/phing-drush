@@ -23,7 +23,6 @@
                    --exclude=styles
                    --exclude=xmlsitemap"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 

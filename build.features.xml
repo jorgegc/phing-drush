@@ -13,7 +13,6 @@
           description="Reverts all the features.">
     <exec command="${drush.bin} ${drush.target} fra -y"
           passthru="true"
-          logoutput="true"
           checkreturn="true" />
   </target>
 
