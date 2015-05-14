@@ -4,10 +4,10 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.bin"    value="${project.basedir}/bin/drush" />
-  <property name="drush.source" value="" />
-  <property name="drush.target" value="" />
-  <property name="drush.tmpdir" value="/tmp" />
+  <property name="drush.bin"     value="${project.basedir}/bin/drush" />
+  <property name="drush.source"  value="" />
+  <property name="drush.target"  value="" />
+  <property name="drush.tmp.dir" value="/tmp" />
 
   <!-- ## Targets -->
 
@@ -36,7 +36,7 @@
   <target name="database:sync-cached"
           description="Synchronises the database from source to target with dump cached locally."
           depends="database:drop">
-    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmpdir}/${phing.project.name}.sync.sql"
+    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.tmp.dir}/${phing.project.name}.sync.sql"
           passthru="true"
           checkreturn="true" />
   </target>
