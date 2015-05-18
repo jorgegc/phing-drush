@@ -13,7 +13,6 @@ $aliases['live'] = array(
   'ssh-options' => '-p ${ssh.port.live}',
   'path-aliases' => array(
     '%dump-dir' => '/tmp',
-    '%files' => 'sites/default/files/',
   ),
 );
 
@@ -25,7 +24,6 @@ $aliases['uat'] = array(
   'ssh-options' => '-p ${ssh.port.uat}',
   'path-aliases' => array(
     '%dump-dir' => '/tmp',
-    '%files' => 'sites/default/files/',
   ),
 );
 
@@ -34,6 +32,5 @@ $aliases['local'] = array(
   'uri' => '${app.uri}',
   'path-aliases' => array(
     '%dump-dir' => '/tmp',
-    '%files' => 'sites/default/files/',
   ),
 );
