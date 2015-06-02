@@ -41,4 +41,11 @@
           checkreturn="true" />
   </target>
 
+  <target name="database:clear-sessions"
+          description="Clears the session table, logging all users out.">
+    <exec command="${drush.bin} ${drush.target} sql-query 'TRUNCATE TABLE sessions;'"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
 </project>
