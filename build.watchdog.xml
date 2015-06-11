@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-user" default="watchdog:clear">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin"    value="${project.basedir}/bin/drush" />
+  <property name="drush.target" value="" />
+
+  <!-- ## Targets -->
+
+  <target name="watchdog:clear"
+          description="Clears the watchdog logs.">
+    <exec command="${drush.bin} ${drush.target} wd-del all"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+</project>
