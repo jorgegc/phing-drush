@@ -9,7 +9,6 @@
 
   <property name="drupal.admin.username" value="" />
   <property name="drupal.admin.password" value="" />
-  <property name="drupal.sessions.table" value="sessions" />
 
   <!-- ## Targets -->
 
@@ -29,17 +28,22 @@
 
   <target name="user:logout"
           description="Logs out a specific user.">
-    <input propertyName="drupal.user.id"
-           message="Enter the user ID"
-           promptChar=":" />
-    <exec command="${drush.bin} ${drush.target} sql-query 'DELETE FROM ${drupal.sessions.table} WHERE uid = ${drupal.user.id};'"
+    <if>
+      <not><isset property="input.user.id" /></not>
+      <then>
+        <input propertyName="input.user.id"
+               message="Enter the user ID"
+               promptChar=":" />
+      </then>
+    </if>
+    <exec command="${drush.bin} ${drush.target} sql-query 'DELETE FROM sessions WHERE uid = ${input.user.id};'"
           passthru="true"
           checkreturn="true" />
   </target>
 
   <target name="user:logout-all"
           description="Logs all users out.">
-    <exec command="${drush.bin} ${drush.target} sql-query 'TRUNCATE TABLE ${drupal.sessions.table};'"
+    <exec command="${drush.bin} ${drush.target} sql-query 'TRUNCATE TABLE sessions;'"
           passthru="true"
           checkreturn="true" />
   </target>
