@@ -11,6 +11,13 @@
 
   <!-- ## Targets -->
 
+  <target name="database:create"
+          description="Creates a database.">
+    <exec command="${drush.bin} ${drush.target} sql-create -y"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
   <target name="database:update"
           description="Performs database updates.">
     <exec command="${drush.bin} ${drush.target} updb -y"
