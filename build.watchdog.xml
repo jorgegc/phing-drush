@@ -11,7 +11,7 @@
 
   <target name="watchdog:clear"
           description="Clears the watchdog logs.">
-    <exec command="${drush.bin} ${drush.target} wd-del all"
+    <exec command="${drush.bin} ${drush.target} wd-del all -y"
           passthru="true"
           checkreturn="true" />
   </target>
