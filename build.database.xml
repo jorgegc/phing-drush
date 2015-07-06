@@ -8,6 +8,7 @@
   <property name="drush.source"   value="" />
   <property name="drush.target"   value="" />
   <property name="drush.dump.dir" value="/tmp" />
+  <property name="drush.sessions_table" value="sessions" />
 
   <!-- ## Targets -->
 
@@ -44,6 +45,20 @@
           description="Synchronises the database from source to target with dump cached locally."
           depends="database:drop">
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.dump.dir}/${phing.project.name}.sync.sql"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="database:clear-sessions"
+          description="Clears the session table, logging all users out.">
+    <exec command="${drush.bin} ${drush.target} sql-query 'TRUNCATE TABLE ${drush.sessions_table};'"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+  <target name="database:clear-watchdog"
+          description="Clears the watchdog logs.">
+    <exec command="${drush.bin} ${drush.target} watchdog-delete all"
           passthru="true"
           checkreturn="true" />
   </target>
