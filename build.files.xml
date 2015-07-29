@@ -16,6 +16,7 @@
                    --mode=avz
                    --delete
                    --force
+                   --exclude=tmp
                    --exclude=cdn
                    --exclude=css
                    --exclude=ctools
