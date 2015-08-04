@@ -16,6 +16,7 @@
                    --mode=avz
                    --delete
                    --force
+                   --exclude=.htaccess
                    --exclude=tmp
                    --exclude=cdn
                    --exclude=css
