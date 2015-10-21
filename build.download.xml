@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="drush-download" default="download:drupal">
+
+  <!-- ## Properties -->
+
+  <property name="drush.bin" value="${project.basedir}/bin/drush" />
+
+  <property name="drupal.core.destination" value="${project.basedir}" />
+  <property name="drupal.core.dir.name"    value="docroot" />
+  <property name="drupal.core.version"     value="7" />
+
+  <!-- ## Targets -->
+
+  <target name="download:drupal"
+          description="Downloads Drupal core.">
+    <exec command="${drush.bin} dl drupal-${drupal.core.version} -y --destination=${drupal.core.destination} --drupal-project-rename=${drupal.core.dir.name}"
+          passthru="true"
+          checkreturn="true" />
+  </target>
+
+</project>

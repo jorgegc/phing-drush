@@ -23,6 +23,7 @@ include these tasks as well with the following line in your build.xml:
 <import file="vendor/jorgegc/phing-drush/build.cache.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.cron.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.database.xml" optional="true" />
+<import file="vendor/jorgegc/phing-drush/build.download.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.features.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.files.xml" optional="true" />
 <import file="vendor/jorgegc/phing-drush/build.install.xml" optional="true" />
