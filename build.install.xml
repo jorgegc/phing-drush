@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-install" default="install:drupal">
+<project name="drush-install" default="drush-install:drupal">
 
   <!-- ## Properties -->
 
@@ -12,7 +12,7 @@
 
   <!-- ## Targets -->
 
-  <target name="install:drupal"
+  <target name="drush-install:drupal"
           description="Installs Drupal on a clean database.">
     <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile.name} -y --sites-subdir=${drupal.sites.subdir}"
           passthru="true"

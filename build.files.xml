@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-files" default="files:sync">
+<project name="drush-files" default="drush-files:sync">
 
   <!-- ## Properties -->
 
@@ -10,7 +10,7 @@
 
   <!-- ## Targets -->
 
-  <target name="files:sync"
+  <target name="drush-files:sync"
           description="Synchronises the files from source to target.">
     <exec command="${drush.bin} -y rsync ${drush.source}:%files ${drush.target}:%files
                    --mode=avz

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-cron" default="cron:run">
+<project name="drush-cron" default="drush-cron:run">
 
   <!-- ## Properties -->
 
@@ -9,7 +9,7 @@
 
   <!-- ## Targets -->
 
-  <target name="cron:run"
+  <target name="drush-cron:run"
           description="Runs the Drupal cron.">
     <exec command="${drush.bin} ${drush.target} cron"
           passthru="true"

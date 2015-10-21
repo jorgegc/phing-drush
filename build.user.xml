@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-user" default="user:login">
+<project name="drush-user" default="drush-user:login">
 
   <!-- ## Properties -->
 
@@ -12,21 +12,21 @@
 
   <!-- ## Targets -->
 
-  <target name="user:login"
+  <target name="drush-user:login"
           description="Displays a one time login link.">
     <exec command="${drush.bin} ${drush.target} uli"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="user:password"
+  <target name="drush-user:password"
           description="(Re)Sets the password for a user account.">
     <exec command="${drush.bin} ${drush.target} upwd ${drupal.admin.username} --password=${drupal.admin.password}"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="user:logout"
+  <target name="drush-user:logout"
           description="Logs out a specific user.">
     <if>
       <not><isset property="input.user.id" /></not>
@@ -41,7 +41,7 @@
           checkreturn="true" />
   </target>
 
-  <target name="user:logout-all"
+  <target name="drush-user:logout-all"
           description="Logs all users out.">
     <exec command="${drush.bin} ${drush.target} sql-query 'TRUNCATE TABLE sessions;'"
           passthru="true"

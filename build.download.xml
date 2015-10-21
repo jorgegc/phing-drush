@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-download" default="download:drupal">
+<project name="drush-download" default="drush-download:drupal">
 
   <!-- ## Properties -->
 
@@ -12,7 +12,7 @@
 
   <!-- ## Targets -->
 
-  <target name="download:drupal"
+  <target name="drush-download:drupal"
           description="Downloads Drupal core.">
     <exec command="${drush.bin} dl drupal-${drupal.core.version} -y --destination=${drupal.core.destination} --drupal-project-rename=${drupal.core.dir.name}"
           passthru="true"

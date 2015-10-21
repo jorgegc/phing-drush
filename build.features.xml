@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-features" default="features:revert">
+<project name="drush-features" default="drush-features:revert">
 
   <!-- ## Properties -->
 
@@ -9,7 +9,7 @@
 
   <!-- ## Targets -->
 
-  <target name="features:revert"
+  <target name="drush-features:revert"
           description="Reverts all the features.">
     <exec command="${drush.bin} ${drush.target} fra -y"
           passthru="true"

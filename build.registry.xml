@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-registry" default="registry:rebuild">
+<project name="drush-registry" default="drush-registry:rebuild">
 
   <!-- ## Properties -->
 
@@ -9,7 +9,7 @@
 
   <!-- ## Targets -->
 
-  <target name="registry:rebuild"
+  <target name="drush-registry:rebuild"
           description="Runs a registry rebuild on the application.">
     <exec command="${drush.bin} dl registry_rebuild -y"
           passthru="true"

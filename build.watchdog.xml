@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-watchdog" default="watchdog:clear">
+<project name="drush-watchdog" default="drush-watchdog:clear">
 
   <!-- ## Properties -->
 
@@ -9,7 +9,7 @@
 
   <!-- ## Targets -->
 
-  <target name="watchdog:clear"
+  <target name="drush-watchdog:clear"
           description="Clears the watchdog logs.">
     <exec command="${drush.bin} ${drush.target} wd-del all -y"
           passthru="true"

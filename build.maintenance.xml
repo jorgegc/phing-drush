@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-maintenance" default="maintenance:off">
+<project name="drush-maintenance" default="drush-maintenance:off">
 
   <!-- ## Properties -->
 
@@ -9,7 +9,7 @@
 
   <!-- ## Targets -->
 
-  <target name="maintenance:on"
+  <target name="drush-maintenance:on"
           description="Turns on Drupal maintenance modes.">
     <exec command="${drush.bin} ${drush.target} vset site_offline 1 -y"
           passthru="true"
@@ -19,7 +19,7 @@
           checkreturn="true" />
   </target>
 
-  <target name="maintenance:off"
+  <target name="drush-maintenance:off"
           description="Turns off Drupal maintenance mode.">
     <exec command="${drush.bin} ${drush.target} vset site_offline 0 -y"
           passthru="true"

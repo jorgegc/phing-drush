@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-cache" default="cache:clear">
+<project name="drush-cache" default="drush-cache:clear">
 
   <!-- ## Properties -->
 
@@ -9,14 +9,14 @@
 
   <!-- ## Targets -->
 
-  <target name="cache:clear"
+  <target name="drush-cache:clear"
           description="Clears the Drupal cache.">
     <exec command="${drush.bin} ${drush.target} cc all"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="cache:disable"
+  <target name="drush-cache:disable"
           description="Disables Drupal page cache and CSS and JS aggregation.">
     <exec command="${drush.bin} ${drush.target} vset -y cache 0"
           passthru="true"

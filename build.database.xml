@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-database" default="database:update">
+<project name="drush-database" default="drush-database:update">
 
   <!-- ## Properties -->
 
@@ -11,38 +11,38 @@
 
   <!-- ## Targets -->
 
-  <target name="database:create"
+  <target name="drush-database:create"
           description="Creates a database.">
     <exec command="${drush.bin} ${drush.target} sql-create -y"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="database:update"
+  <target name="drush-database:update"
           description="Performs database updates.">
     <exec command="${drush.bin} ${drush.target} updb -y"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="database:drop"
+  <target name="drush-database:drop"
           description="Drops the target database.">
     <exec command="${drush.bin} ${drush.target} sql-drop -y"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="database:sync"
+  <target name="drush-database:sync"
           description="Synchronises the database from source to target."
-          depends="database:drop">
+          depends="drush-database:drop">
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --no-cache"
           passthru="true"
           checkreturn="true" />
   </target>
 
-  <target name="database:sync-cached"
+  <target name="drush-database:sync-cached"
           description="Synchronises the database from source to target with dump cached locally."
-          depends="database:drop">
+          depends="drush-database:drop">
     <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --target-dump=${drush.dump.dir}/${phing.project.name}.sync.sql"
           passthru="true"
           checkreturn="true" />
