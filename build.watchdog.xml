@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-user" default="watchdog:clear">
+<project name="drush-watchdog" default="watchdog:clear">
 
   <!-- ## Properties -->
 
