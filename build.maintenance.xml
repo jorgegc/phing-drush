@@ -9,7 +9,8 @@
 
   <!-- ## Targets -->
 
-  <target name="maintenance:on" description="Turns on Drupal maintenance modes.">
+  <target name="maintenance:on"
+          description="Turns on Drupal maintenance modes.">
     <exec command="${drush.bin} ${drush.target} vset site_offline 1 -y"
           passthru="true"
           checkreturn="true" />
@@ -18,7 +19,8 @@
           checkreturn="true" />
   </target>
 
-  <target name="maintenance:off" description="Turns off Drupal maintenance mode.">
+  <target name="maintenance:off"
+          description="Turns off Drupal maintenance mode.">
     <exec command="${drush.bin} ${drush.target} vset site_offline 0 -y"
           passthru="true"
           checkreturn="true" />
