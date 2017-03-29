@@ -14,7 +14,7 @@
 
   <target name="drush-install:drupal"
           description="Installs Drupal on a clean database.">
-    <exec command="${drush.bin} ${drush.target} site-install ${drupal.profile.name} -y --sites-subdir=${drupal.sites.subdir}"
+    <exec command="${drush.bin} ${drush.target} si ${drupal.profile.name} -y --sites-subdir=${drupal.sites.subdir}"
           passthru="true"
           checkreturn="true" />
   </target>

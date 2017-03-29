@@ -8,7 +8,7 @@
 
   <property name="drupal.core.destination" value="${project.basedir}" />
   <property name="drupal.core.dir.name"    value="docroot" />
-  <property name="drupal.core.version"     value="7" />
+  <property name="drupal.core.version"     value="8" />
 
   <!-- ## Targets -->
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-cache" default="drush-cache:clear">
+<project name="drush-cache" default="drush-cache:rebuild">
 
   <!-- ## Properties -->
 
@@ -9,31 +9,22 @@
 
   <!-- ## Targets -->
 
-  <target name="drush-cache:clear"
-          description="Clears the Drupal cache.">
-    <exec command="${drush.bin} ${drush.target} cc all"
+  <target name="drush-cache:rebuild"
+          description="Rebuilds the Drupal cache.">
+    <exec command="${drush.bin} ${drush.target} cr"
           passthru="true"
           checkreturn="true" />
   </target>
 
   <target name="drush-cache:disable"
           description="Disables Drupal page cache and CSS and JS aggregation.">
-    <exec command="${drush.bin} ${drush.target} vset -y cache 0"
+    <exec command="${drush.bin} ${drush.target} cset -y system.performance cache.page.max_age 0"
           passthru="true"
           checkreturn="true" />
-    <exec command="${drush.bin} ${drush.target} vset -y block_cache 0"
+    <exec command="${drush.bin} ${drush.target} cset -y system.performance css.preprocess 0"
           passthru="true"
           checkreturn="true" />
-    <exec command="${drush.bin} ${drush.target} vset -y cache_lifetime 0"
-          passthru="true"
-          checkreturn="true" />
-    <exec command="${drush.bin} ${drush.target} vset -y page_cache_maximum_age 0"
-          passthru="true"
-          checkreturn="true" />
-    <exec command="${drush.bin} ${drush.target} vset -y preprocess_css 0"
-          passthru="true"
-          checkreturn="true" />
-    <exec command="${drush.bin} ${drush.target} vset -y preprocess_js 0"
+    <exec command="${drush.bin} ${drush.target} cset -y system.performance js.preprocess 0"
           passthru="true"
           checkreturn="true" />
   </target>

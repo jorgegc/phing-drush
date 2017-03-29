@@ -35,7 +35,7 @@
   <target name="drush-database:sync"
           description="Synchronises the database from source to target."
           depends="drush-database:drop">
-    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y --no-cache"
+    <exec command="${drush.bin} sql-sync ${drush.source} ${drush.target} -y"
           passthru="true"
           checkreturn="true" />
   </target>

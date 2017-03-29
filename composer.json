@@ -12,7 +12,7 @@
         "source": "https://github.com/jorgegc/phing-drush"
     },
     "require": {
-        "drush/drush": "6.*"
+        "drush/drush": "~8.1"
     },
     "config": {
         "bin-dir": "bin/"
