@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="drush-features" default="drush-features:revert">
+<project name="drush-features" default="drush-features:import">
 
   <!-- ## Properties -->
 
@@ -9,9 +9,9 @@
 
   <!-- ## Targets -->
 
-  <target name="drush-features:revert"
-          description="Reverts all the features.">
-    <exec command="${drush.bin} ${drush.target} fra -y"
+  <target name="drush-features:import"
+          description="Imports all the config from all the features.">
+    <exec command="${drush.bin} ${drush.target} fia -y"
           passthru="true"
           checkreturn="true" />
   </target>

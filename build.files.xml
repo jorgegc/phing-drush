@@ -21,6 +21,8 @@
                    --exclude=css
                    --exclude=ctools
                    --exclude=js
+                   --exclude=media-icons
+                   --exclude=php
                    --exclude=styles
                    --exclude=xmlsitemap"
           passthru="true"
