@@ -4,16 +4,17 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.alias.file" value="${project.basedir}/example.aliases.drushrc.php" />
+  <property name="drush.alias.file.source" value="${project.basedir}/drush/example.aliases.drushrc.php" />
   <property name="drush.alias.dir"  value="${env.HOME}/.drush" />
+  <property name="drush.alias.file.dest" value="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php" />
 
   <!-- ## Targets -->
 
   <target name="drush:config"
           description="Configures Drush for the project.">
     <mkdir dir="${drush.alias.dir}" />
-    <copy file="${drush.alias.file}"
-          tofile="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php"
+    <copy file="${drush.alias.file.source}"
+          tofile="${drush.alias.file.dest}"
           overwrite="true">
       <filterchain>
         <expandproperties />
