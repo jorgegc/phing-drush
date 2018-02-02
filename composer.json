@@ -6,7 +6,7 @@
         "drush"
     ],
     "homepage": "https://github.com/jorgegc/phing-drush",
-    "license": "GPL-2.0+",
+    "license": "MIT",
     "support": {
         "issues": "https://github.com/jorgegc/phing-drush",
         "source": "https://github.com/jorgegc/phing-drush"
