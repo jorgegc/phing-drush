@@ -1,0 +1,35 @@
+# Docs at https://github.com/drush-ops/drush/blob/master/examples/example.site.yml
+
+live:
+  host: ${ssh.host.live}
+  user: ${ssh.user.live}
+  root: ${app.root.live}
+  uri: ${app.uri.live}
+  paths:
+    drush-script: ${app.root.live}/../vendor/drush/drush/drush.php
+    dump-dir: /tmp
+
+uat:
+  host: ${ssh.host.uat}
+  user: ${ssh.user.uat}
+  root: ${app.root.uat}
+  uri: ${app.uri.uat}
+  paths:
+    drush-script: ${app.root.uat}/../vendor/drush/drush/drush.php
+    dump-dir: /tmp
+
+dev:
+  host: ${ssh.host.dev}
+  user: ${ssh.user.dev}
+  root: ${app.root.dev}
+  uri: ${app.uri.dev}
+  paths:
+    drush-script:  ${app.root.dev}/../vendor/drush/drush/drush.php
+    dump-dir: /tmp
+
+local:
+  root: ${app.root}
+  uri: ${app.uri}
+  paths:
+    drush-script: ${app.root}/../vendor/drush/drush/drush.php
+    dump-dir: /tmp
