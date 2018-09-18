@@ -2,16 +2,11 @@
 
 <project name="drush" default="drush:config">
 
-
-  <!-- ## Drush 8 Default Properties-->
-  <property name="drush.alias.file.source" value="${project.basedir}/example.aliases.drushrc.php" />
-  <property name="drush.alias.dir"         value="${env.HOME}/.drush" />
-  <property name="drush.alias.file.dest"   value="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php" />
-
-  <!-- ## Drush 9 Default Properties-->
-  <property name="drush-9.alias.file.source" value="${project.basedir}/example.site.yml" />
-  <property name="drush-9.alias.dir"         value="${env.HOME}/.drush/sites" />
-  <property name="drush-9.alias.file.dest"   value="${drush.alias.dir}/${phing.project.name}.site.yml" />
+  <!-- ## Properties-->
+  
+  <property name="drush.alias.file.source" value="${project.basedir}/example.site.yml" />
+  <property name="drush.alias.dir"         value="${env.HOME}/.drush/sites" />
+  <property name="drush.alias.file.dest"   value="${drush.alias.dir}/${phing.project.name}.site.yml" />
 
   <!-- ## Targets -->
 
@@ -20,18 +15,6 @@
     <mkdir dir="${drush.alias.dir}" />
     <copy file="${drush.alias.file.source}"
           tofile="${drush.alias.file.dest}"
-          overwrite="true">
-      <filterchain>
-        <expandproperties />
-      </filterchain>
-    </copy>
-  </target>
-
-  <target name="drush-9:config"
-          description="Configures Drush 9 for the project.">
-    <mkdir dir="${drush-9.alias.dir}" />
-    <copy file="${drush-9.alias.file.source}"
-          tofile="${drush-9.alias.file.dest}"
           overwrite="true">
       <filterchain>
         <expandproperties />
