@@ -2,7 +2,7 @@
 
 <project name="drush" default="drush:config">
 
-  <!-- ## Properties-->
+  <!-- ## Properties -->
 
   <property name="drush.alias.file.source" value="${project.basedir}/example.site.yml" />
   <property name="drush.alias.dir"         value="${env.HOME}/.drush/sites" />
