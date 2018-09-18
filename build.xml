@@ -4,9 +4,9 @@
 
   <!-- ## Properties -->
 
-  <property name="drush.alias.file.source" value="${project.basedir}/example.aliases.drushrc.php" />
-  <property name="drush.alias.dir"         value="${env.HOME}/.drush" />
-  <property name="drush.alias.file.dest"   value="${drush.alias.dir}/${phing.project.name}.aliases.drushrc.php" />
+  <property name="drush.alias.file.source" value="${project.basedir}/example.site.yml" />
+  <property name="drush.alias.dir"         value="${env.HOME}/.drush/sites" />
+  <property name="drush.alias.file.dest"   value="${drush.alias.dir}/${phing.project.name}.site.yml" />
 
   <!-- ## Targets -->
 
