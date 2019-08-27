@@ -6,7 +6,7 @@ live:
   root: ${app.root.live}
   uri: ${app.uri.live}
   paths:
-    drush-script: ${app.root.live}/../vendor/drush/drush/drush.php
+    drush-script: ${app.root.live}/../vendor/drush/drush/drush
     dump-dir: /tmp
 
 uat:
@@ -15,7 +15,7 @@ uat:
   root: ${app.root.uat}
   uri: ${app.uri.uat}
   paths:
-    drush-script: ${app.root.uat}/../vendor/drush/drush/drush.php
+    drush-script: ${app.root.uat}/../vendor/drush/drush/drush
     dump-dir: /tmp
 
 dev:
@@ -24,12 +24,12 @@ dev:
   root: ${app.root.dev}
   uri: ${app.uri.dev}
   paths:
-    drush-script:  ${app.root.dev}/../vendor/drush/drush/drush.php
+    drush-script:  ${app.root.dev}/../vendor/drush/drush/drush
     dump-dir: /tmp
 
 local:
   root: ${app.root}
   uri: ${app.uri}
   paths:
-    drush-script: ${app.root}/../vendor/drush/drush/drush.php
+    drush-script: ${app.root}/../vendor/drush/drush/drush
     dump-dir: /tmp
